@@ -1,0 +1,128 @@
+<style>
+.sidebar ul>li:nth-child(3) a {
+	background-color: rgb(157, 34, 60);
+	background-image: -webkit-linear-gradient(135deg, rgb(114, 51, 98),
+		rgb(157, 34, 60));
+	background-image: -moz-linear-gradient(135deg, rgb(114, 51, 98),
+		rgb(157, 34, 60));
+	background-image: -o-linear-gradient(135deg, rgb(114, 51, 98),
+		rgb(157, 34, 60));
+	background-image: linear-gradient(135deg, rgb(114, 51, 98),
+		rgb(157, 34, 60));
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1), 0 1px 1px
+		rgba(0, 0, 0, .1);
+	color: #FFF !important;
+	transition: all .1s ease;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+</style>
+
+<div ng-include="'header/header2.html'"></div>
+
+<div class="container-fluid">
+	<div class="row">
+
+		<nav id="sidebar"
+			class="col-sm-3 col-md-2 bg-faded sidebar"
+			data-spy="affix" data-offset-top="52" data-offset-bottom="502"
+			ng-drop="true" ng-drop-success="onDropCompleteRemove($data,$event)">
+			<ul class="draggable-objects nav nav-pills flex-column">
+				<li ng-repeat="obj in listItems" class="nav-item"><a
+					ng-drag="false" ng-drag-data="obj" data-allow-transform="true"
+					class="nav-link" ng-click="button(obj.title);"
+					ng-center-anchor="true"> {{obj.title}} </a></li>
+			</ul>
+		</nav>
+
+		<div class="col-lg-6 col-md-8 col-sm-8"
+			style="background: lightgrey; margin: 10px; max-height: 400px;">
+			<div class="row" style="padding: 20px; height: 100px;">
+				<div class="col-lg-4">
+					<h5>Transfer Money</h5>
+				</div>
+				<div class="col-lg-8">
+					<object style="width: 160px; float: right;" type="image/svg+xml"
+						data="app-content/images/balance-transfer-icon.svg"> </object>
+				</div>
+			</div>
+			<div class="row"
+				style="padding: 20px; text-align: center; margin-top: 40px;">
+				<div class="col-lg-3 bg-blue transferMenu">
+					<a href="#!/makeTransfer"> <img
+						src="app-content/images/within-acc.png"></img>
+						<p>Between my accounts at Cyber Bank</p>
+					</a>
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-lg-3 bg-blue transferMenu">
+					<a href="#!/makeTransfer"> <img
+						src="app-content/images/with-in-bank.png"></img>
+						<p>To/From accounts at another bank</p>
+					</a>
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-lg-3 bg-blue transferMenu">
+					<a href="#!/makeTransfer"> <img
+						src="app-content/images/someone-else.png"></img>
+						<p>To someone else or a business</p>
+					</a>
+				</div>
+				<!-- /.col-lg-4 -->
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="support-menu">
+				<nav class="vertical">
+					<ul style="margin-left: -20px;">
+						<li><a href="#">Credit Card</a>
+							<div>
+								<ul>
+									<li><a href="#">General</a></li>
+									<li><a href="#">My Cards</a></li>
+									<li><a href="#">Apply</a></li>
+									<li><a href="#">New Features</a></li>
+									<li><a href="#">How To's</a></li>
+									<li><a href="#">Pay Bill</a></li>
+								</ul>
+							</div></li>
+						<li><a href="#">Loan</a>
+							<div>
+								<ul>
+									<li><a href="#">My Loans</a></li>
+									<li><a href="#">Pay</a></li>
+									<li><a href="#">Apply</a></li>
+									<li><a href="#">Help</a></li>
+									<li><a href="#">How To's</a></li>
+								</ul>
+							</div></li>
+						<li><a href="#">Appointment</a>
+							<div>
+								<ul>
+									<li><a href="#">Schedule</a></li>
+									<li><a href="#">Upcoming</a></li>
+								</ul>
+							</div></li>
+						<li><a href="#">Support Forum</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<div ng-include="'footer/footer.html'"></div>
+	</div>
+</div>
+
+<script>
+	$(".nav-link").draggable().click(function() {
+		if ($(this).is('.ui-draggable-dragging')) {
+			return;
+		}
+		// click action here
+	});
+</script>
+

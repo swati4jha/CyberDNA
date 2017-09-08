@@ -1,0 +1,238 @@
+<style>
+.sidebar ul>li:nth-child(4) a {
+	background-color: rgb(157, 34, 60);
+	background-image: -webkit-linear-gradient(135deg, rgb(114, 51, 98),
+		rgb(157, 34, 60));
+	background-image: -moz-linear-gradient(135deg, rgb(114, 51, 98),
+		rgb(157, 34, 60));
+	background-image: -o-linear-gradient(135deg, rgb(114, 51, 98),
+		rgb(157, 34, 60));
+	background-image: linear-gradient(135deg, rgb(114, 51, 98),
+		rgb(157, 34, 60));
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1), 0 1px 1px
+		rgba(0, 0, 0, .1);
+	color: #FFF !important;
+	transition: all .1s ease;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+</style>
+
+<div ng-include="'header/header2.html'"></div>
+
+<div class="container-fluid">
+	<div class="row">
+
+		<nav id="sidebar"
+			class="col-sm-3 col-md-2 bg-faded sidebar"
+			data-spy="affix" data-offset-top="52" data-offset-bottom="502"
+			ng-drop="true" ng-drop-success="onDropCompleteRemove($data,$event)">
+			<ul class="draggable-objects nav nav-pills flex-column">
+				<li ng-repeat="obj in listItems" class="nav-item"><a
+					ng-drag="false" ng-drag-data="obj" data-allow-transform="true"
+					class="nav-link" ng-click="button(obj.title);"
+					ng-center-anchor="true"> {{obj.title}} </a></li>
+			</ul>
+		</nav>
+
+		<div class="col-lg-6 col-md-8 col-sm-8 profile"
+			style="margin: 10px;">
+			 <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+            </ul>
+			<div class="tab-content p-b-3">
+                <div class="tab-pane active" id="profile">
+                    <h4 class="m-y-2">User Profile</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Details</h6>
+                            <p>
+                                {{vm.user.firstName}}
+                            </p>
+                            <h6>Address</h6>
+                            <p>
+                                UNCC Charlotte.
+                            </p>
+                        </div>
+                       
+                        <div class="col-md-12">
+                            <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right"></span> Recent Activity</h4>
+                            <table class="table table-hover table-striped">
+                                <tbody>                                    
+                                    <tr>
+                                        <td>
+                                            <strong>Transferred</strong> 200$ from checking to <strong>`Adrian`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Received</strong> 35$ from <strong>`Swati`</strong>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Paid</strong> 20$ for the bill payment <strong>`Food Lion`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Paid</strong> 23$ for the bill payment <strong>`Starbucks`</strong>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="messages">
+                    <h4 class="m-y-2">Recent Messages &amp; Notifications</h4>
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a> Your checking account balance is <strong>low</strong>. 
+                    </div>
+                    <table class="table table-hover table-striped">
+                        <tbody>                                    
+                            <tr>
+                                <td>
+                                   <span class="pull-xs-right font-weight-bold">11/10: </span>You have been qualified to pre approved loan.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="pull-xs-right font-weight-bold">Yesterday</span> There has been a request on your account to change the address.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="pull-xs-right font-weight-bold">9/10</span> Your monthly account statement has been emailed.
+                                </td>
+                            </tr>
+                            
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="tab-pane" id="edit">
+                    <h4 class="m-y-2">Edit Profile</h4>
+                    <form role="form">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="{{vm.user.userName}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="email" value="{{vm.user.email}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="" placeholder="Street">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" value="" placeholder="City">
+                            </div>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" value="" placeholder="State">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value="{{vm.user.password}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value="{{vm.user.password}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                                <input type="reset" class="btn btn-secondary" value="Cancel">
+                                <input type="button" class="btn btn-red" value="Save Changes">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+		</div>
+		<div class="col-lg-3">
+			<div class="support-menu">
+				<nav class="vertical">
+					<ul style="margin-left: -20px;">
+						<li><a href="#">Credit Card</a>
+							<div>
+								<ul>
+									<li><a href="#">General</a></li>
+									<li><a href="#">My Cards</a></li>
+									<li><a href="#">Apply</a></li>
+									<li><a href="#">New Features</a></li>
+									<li><a href="#">How To's</a></li>
+									<li><a href="#">Pay Bill</a></li>
+								</ul>
+							</div></li>
+						<li><a href="#">Loan</a>
+							<div>
+								<ul>
+									<li><a href="#">My Loans</a></li>
+									<li><a href="#">Pay</a></li>
+									<li><a href="#">Apply</a></li>
+									<li><a href="#">Help</a></li>
+									<li><a href="#">How To's</a></li>
+								</ul>
+							</div></li>
+						<li><a href="#">Appointment</a>
+							<div>
+								<ul>
+									<li><a href="#">Schedule</a></li>
+									<li><a href="#">Upcoming</a></li>
+								</ul>
+							</div></li>
+						<li><a href="#">Support Forum</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<div ng-include="'footer/footer.html'"></div>
+	</div>
+</div>
+
+<script>
+	$(".nav-link").draggable().click(function() {
+		if ($(this).is('.ui-draggable-dragging')) {
+			return;
+		}
+		// click action here
+	});
+</script>
+
